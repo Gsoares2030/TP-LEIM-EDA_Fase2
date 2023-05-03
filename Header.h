@@ -28,7 +28,7 @@ typedef struct registo3
 typedef struct registo2
 {
 	char vertice[TAM]; /*geocódigo what3words*/ 
-	float peso; /*distancia de um meio ao outro*/
+	float peso; /*distancia de um meio ao outro em metros*/
 	struct registo2* seguinte; /*endereço de memoria para o proximo vertice adjacente*/
 } *Adjacente;
 

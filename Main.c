@@ -59,9 +59,9 @@ int main()
 			}
 			break;
 
-		case 2:printf("Localização primeiro vertice da aresta\n");
+		case 2:printf("Localizacao primeiro vertice da aresta\n");
 			scanf("%s", &verticeinico);
-			printf("Localização segundo vertice:\n");
+			printf("Localizacao segundo vertice:\n");
 			scanf("%s", &verticefim);
 			printf("Peso entre vertices:\n");
 			scanf("%d", &peso);
@@ -73,16 +73,16 @@ int main()
 			}
 			else if (resultado==-1)
 			{
-				printf("A localização do primeiro ou segundo vertice não existem no grafo\n");
+				printf("A localizacao do primeiro ou segundo vertice nao existem no grafo\n");
 			}
 			else
 			{
-				printf("Não foi possivel criar a aresta \n");
+				printf("Nao foi possivel criar a aresta \n");
 			}
 			
 			break;
 
-		case 3:printf("Localização do vertice no qual queremos ver os adjacentes: \n");
+		case 3:printf("Localizacao do vertice no qual queremos ver os adjacentes: \n");
 			scanf("%s", &geocodigo);
 			printf("-------------------------------------------------\n");
 			listarAdjacentes(g, geocodigo);
@@ -90,7 +90,7 @@ int main()
 
 		case 4: printf("Tipo de meio:\n");
 			scanf("%s", &tipoveiculo);
-			printf("Localização do meio:\n");
+			printf("Localizacao do meio:\n");
 			scanf("%s", &geocodigo);
 			printf("Codigo do meio:\n");
 			scanf("%d", &codigo);
@@ -108,7 +108,7 @@ int main()
 			}
 			break;
 			
-		case 5: printf("Localização para procurar os meios:\n");
+		case 5: printf("Localizacao para procurar os meios:\n");
 			scanf("%s", &geocodigo);
 			printf("----------------------------------------\n");
 			listarMeios(g, geocodigo);
@@ -116,7 +116,7 @@ int main()
 
 		case 6: printf("Nome do cliente:\n");
 			scanf("%s", &nomecliente);
-			printf("Localização do cliente:\n");
+			printf("Localizacao do cliente:\n");
 			scanf("%s", &geocodigo);
 			printf("Número de cliente:\n");
 			scanf("%d", &numerocliente);
@@ -132,7 +132,7 @@ int main()
 			}
 			break;
 
-		case 7:printf("Localização onde seram procurados os clientes:\n");
+		case 7:printf("Localizacao onde seram procurados os clientes:\n");
 			scanf("%s", &geocodigo);
 			printf("----------------------------------------------\n");
 			listarClientes(g, geocodigo);
@@ -187,9 +187,9 @@ int main()
 		case 12: 
 			printf("Indique a localizacao do cliente:\n");
 			scanf("%s", &localizacao);
-			printf("Indique o raio:\n");
+			printf("Indique o raio em metros:\n");
 			scanf("%d", &distancia);
-			printf("-------------------------------------------");
+			printf("-------------------------------------------\n");
 			ListarporDistancia(g, distancia, localizacao);
 			break;
 

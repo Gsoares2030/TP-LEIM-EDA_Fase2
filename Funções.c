@@ -144,6 +144,10 @@ void listarAdjacentes(Grafo g, char vertice[])
         }
         
     }
+    else
+    {
+        printf("O vertice indicado nao existe \n");
+    }
 }
 
 /**
@@ -299,25 +303,41 @@ int LerClientes(Grafo g)
 
 void ListarporDistancia(Grafo g, int distancia, char localizacao[])
 {
-    int aux;
-    if (existeVertice(g,localizacao))
+    Meios aux3;
+    Adjacente aux2;
+    float aux;
+    if (existeVertice(g, localizacao))
     {
-        while (strcmp(g->vertice,localizacao) != 0)
+        while (strcmp(g->vertice, localizacao) != 0)
+        {
             g = g->seguinte;
-        aux = g->adjacentes->peso;
-        if (aux == NULL)
-        {
-            printf("Não existem meios num raio de %d\n",distancia);
         }
-        while (aux == distancia)
+        aux3 = g->meios;
+        aux2 = g->adjacentes;
+        aux = aux2->peso;
+        if (aux > distancia)
         {
-            printf("Nome do meio:%s \n Nivel de bateria:%f  \n", g->meios->tipotransporte, g->meios->bateria);
-            g=g->adjacentes->seguinte;
+            printf("Não existem meios num raio de %d\n", distancia);
         }
-
+        while (aux2 != NULL)
+        {
+            if (aux <= distancia)
+            {
+                printf("Nome do meio:%s \n Nivel de bateria:%0.2f \n Localizacao: %s \n", aux3->tipotransporte, aux3->bateria, aux3->geocodigo);
+            }
+            aux2 = aux2->seguinte;
+            if (aux2 != NULL)
+            {
+                aux3 = aux2->vertice;
+                aux = aux2->peso;
+            }
+        }
+    }
+    else
+    {
+        printf("Nao existe o vertice indicado \n");
     }
 }
-
 
 
 #pragma endregion 
