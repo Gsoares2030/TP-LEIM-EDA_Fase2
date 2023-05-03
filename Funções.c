@@ -301,6 +301,14 @@ int LerClientes(Grafo g)
     return(0);
 }
 
+/**
+ * 
+ * \Enter: Entra o grafo, a distancia maxima a que um meio pode estar do cliente e a localização do cliente
+ * \brief: A função irá ver primeiramente se a localização indicada existe no garfo, para isso compara os vertices existentes no grafo com a localização
+e de seguida vai percorer o grafo ate chegar ao vertice com a determinada localização, depois vai comparar a distancia desse vertice aos adjacentes
+com a distancia indicada e se estiverem entre 0 e o maximo da distancia, seram listados os meios desses vertices
+ * 
+ */
 void ListarporDistancia(Grafo g, int distancia, char localizacao[])
 {
     Meios aux3;
