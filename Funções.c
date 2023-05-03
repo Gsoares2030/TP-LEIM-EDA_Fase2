@@ -133,11 +133,16 @@ void listarAdjacentes(Grafo g, char vertice[])
         while (strcmp(g->vertice, vertice) != 0)
             g = g->seguinte;
         aux = g->adjacentes;
+        if (aux == NULL)
+        {
+            printf("O vertice do grafo indicado nao tem adjacentes\n");
+        }
         while (aux != NULL)
         {
-            printf("Adjacente:%s Peso:%.2f\n", aux->vertice, aux->peso);
+            printf("Adjacente:%s  Peso:%.2f\n", aux->vertice, aux->peso);
             aux = aux->seguinte;
         }
+        
     }
 }
 
@@ -157,7 +162,7 @@ int GuardarMeios(Grafo g)
         Meios aux = g->meios;
         while (aux!= NULL)
         {
-            fprintf(fp, "%s;%d;%0.2f;%s;\n", aux->tipotransporte, aux->codigo,aux->bateria,aux->geocodigo);
+            fprintf(fp, "%s;%s;%d;%0.2f;\n", aux->tipotransporte, aux->geocodigo,aux->codigo,aux->bateria);
             aux = aux->seguinte;
         }
         fclose(fp);
@@ -184,7 +189,7 @@ int LerMeios(Grafo g)
     {
         while (!feof(fp))
         {
-            fscanf(fp, "%[;]%d;%0.2f;%[;]\n",&tipotransporte,&cod,&bateria,&geocodigo);
+            fscanf(fp, "%[;]%[;]%d;%0.2f;\n",&tipotransporte,&geocodigo,&cod,&bateria);
             inserirMeio(g, tipotransporte, geocodigo,cod,bateria);
         }
         fclose(fp);
@@ -257,7 +262,7 @@ int GuardarClientes(Grafo g)
         Cliente aux = g->cliente;
         while (aux != NULL)
         {
-            fprintf(fp, "%s;%d;%s;\n", aux->nome,aux->numerocliente,aux->localizacao);
+            fprintf(fp, "%s;%s;%d;\n", aux->nome,aux->localizacao,aux->numerocliente);
             aux = aux->seguinte;
         }
         fclose(fp);
@@ -283,7 +288,7 @@ int LerClientes(Grafo g)
     {
         while (!feof(fp))
         {
-            fscanf(fp, "%[;]%d;%[;]\n", &nome,&ncliente,&localizacao);
+            fscanf(fp, "%[;]%[;]%d;\n", &nome,&localizacao,&ncliente);
             inserirCliente(g, nome,localizacao,ncliente);
         }
         fclose(fp);
@@ -291,6 +296,28 @@ int LerClientes(Grafo g)
     }
     return(0);
 }
+
+void ListarporDistancia(Grafo g, int distancia, char localizacao[])
+{
+    int aux;
+    if (existeVertice(g,localizacao))
+    {
+        while (strcmp(g->vertice,localizacao) != 0)
+            g = g->seguinte;
+        aux = g->adjacentes->peso;
+        if (aux == NULL)
+        {
+            printf("Não existem meios num raio de %d\n",distancia);
+        }
+        while (aux == distancia)
+        {
+            printf("Nome do meio:%s \n Nivel de bateria:%f  \n", g->meios->tipotransporte, g->meios->bateria);
+            g=g->adjacentes->seguinte;
+        }
+
+    }
+}
+
 
 
 #pragma endregion 

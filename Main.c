@@ -14,15 +14,16 @@ int menu()
 	printf("M E N U\n");
 	printf("1 Criar Vertice\n");
 	printf("2 Criar Aresta\n");
-	printf("3 Listar Vertices adjacentes");
+	printf("3 Listar Vertices adjacentes\n");
 	printf("4 Inserir Meio\n");
-	printf("5 Listar Meios por Localização\n");
+	printf("5 Listar Meios por Localizacao\n");
 	printf("6 Inserir Cliente\n");
-	printf("7 Listar Clientes por localização\n");
+	printf("7 Listar Clientes por localizacao\n");
 	printf("8 Guardar Meios\n");
 	printf("9 Ler Meios\n");
-	printf("10 Guardar Clientes");
-	printf("11 Ler Clientes");
+	printf("10 Guardar Clientes\n");
+	printf("11 Ler Clientes\n");
+	printf("12 Listar Meios num determinado raio a volta do cliente\n");
 	printf("0 Sair\n");
 	printf("Opcao:\n");
 	scanf("%d", &op);
@@ -35,8 +36,8 @@ int main()
 
     Grafo g = NULL;
 
-	char tipoveiculo, geocodigo, localizacaoVertice, verticeinico,verticefim,nomecliente;
-	int codigo,op,peso,numerocliente,resultado;
+	char tipoveiculo[40], geocodigo[TAM], localizacaoVertice[TAM], verticeinico[TAM],verticefim[TAM],nomecliente[50],localizacao[TAM];
+	int codigo,op,peso,numerocliente,resultado, distancia;
 	float bateria;
 
 	do
@@ -47,6 +48,7 @@ int main()
 		case 1: printf("Geocodigo do novo vertice do grafo:\n");
 			scanf("%s", &localizacaoVertice);
 			resultado=criarVertice(&g, localizacaoVertice);
+			printf("-------------------------------------\n");
 			if (resultado==1)
 			{
 				printf("Novo vertice criado com sucesso\n");
@@ -64,6 +66,7 @@ int main()
 			printf("Peso entre vertices:\n");
 			scanf("%d", &peso);
 			resultado=criarAresta(g, verticeinico, verticefim, peso);
+			printf("-------------------------------------\n");
 			if (resultado==1)
 			{
 				printf("Aresta criada com sucesso \n");
@@ -81,6 +84,7 @@ int main()
 
 		case 3:printf("Localização do vertice no qual queremos ver os adjacentes: \n");
 			scanf("%s", &geocodigo);
+			printf("-------------------------------------------------\n");
 			listarAdjacentes(g, geocodigo);
 			break;
 
@@ -90,8 +94,9 @@ int main()
 			scanf("%s", &geocodigo);
 			printf("Codigo do meio:\n");
 			scanf("%d", &codigo);
-			printf("%0.2f", &bateria);
-			printf("*******************************\n");
+			printf("Nivel de bateria: \n");
+			scanf("%f", &bateria);
+			printf("--------------------------------------------\n");
 			resultado=inserirMeio(g, tipoveiculo, geocodigo, codigo,bateria);
 			if (resultado== 1)
 			{
@@ -105,9 +110,8 @@ int main()
 			
 		case 5: printf("Localização para procurar os meios:\n");
 			scanf("%s", &geocodigo);
-			printf("*******************************\n");
+			printf("----------------------------------------\n");
 			listarMeios(g, geocodigo);
-			printf("*******************************\n");
 			break;
 
 		case 6: printf("Nome do cliente:\n");
@@ -117,6 +121,7 @@ int main()
 			printf("Número de cliente:\n");
 			scanf("%d", &numerocliente);
 			resultado=inserirCliente(g, nomecliente, geocodigo, numerocliente);
+			printf("----------------------------------------\n");
 			if (resultado == 1)
 			{
 				printf("Cliente inserido com sucesso\n");
@@ -131,7 +136,6 @@ int main()
 			scanf("%s", &geocodigo);
 			printf("----------------------------------------------\n");
 			listarClientes(g, geocodigo);
-			printf("----------------------------------------------\n");
 			break;
 
 		case 8:
@@ -176,8 +180,17 @@ int main()
 			}
 			else if (resultado == 0)
 			{
-				printf("Erro na abertura do ficheiro");
+				printf("Erro na abertura do ficheiro\n");
 			}
+			break;
+
+		case 12: 
+			printf("Indique a localizacao do cliente:\n");
+			scanf("%s", &localizacao);
+			printf("Indique o raio:\n");
+			scanf("%d", &distancia);
+			printf("-------------------------------------------");
+			ListarporDistancia(g, distancia, localizacao);
 			break;
 
 		}

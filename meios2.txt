@@ -1,1 +1,2 @@
-Bicicleta;56;70;cocadas.parei.serro;
+bicicleta~;q;23;12.00;
+carro;q;23;23.00;
