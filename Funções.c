@@ -193,7 +193,7 @@ int LerMeios(Grafo g)
     {
         while (!feof(fp))
         {
-            fscanf(fp, "%[;]%[;]%d;%0.2f;\n",&tipotransporte,&geocodigo,&cod,&bateria);
+            fscanf(fp, "%[;]%[;]%d;%0.2f;\n",tipotransporte,geocodigo,&cod,&bateria);
             inserirMeio(g, tipotransporte, geocodigo,cod,bateria);
         }
         fclose(fp);
@@ -292,7 +292,7 @@ int LerClientes(Grafo g)
     {
         while (!feof(fp))
         {
-            fscanf(fp, "%[;]%[;]%d;\n", &nome,&localizacao,&ncliente);
+            fscanf(fp, "%[;]%[;]%d;\n", nome,localizacao,&ncliente);
             inserirCliente(g, nome,localizacao,ncliente);
         }
         fclose(fp);

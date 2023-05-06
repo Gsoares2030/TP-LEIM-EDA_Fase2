@@ -16,7 +16,7 @@ int menu()
 	printf("2 Criar Aresta\n");
 	printf("3 Listar Vertices adjacentes\n");
 	printf("4 Inserir Meio\n");
-	printf("5 Listar Meios por Localizacao\n");
+	printf("5 Listar Meios por localizacao\n");
 	printf("6 Inserir Cliente\n");
 	printf("7 Listar Clientes por localizacao\n");
 	printf("8 Guardar Meios\n");
@@ -55,7 +55,7 @@ int main()
 			}
 			else if (resultado==0)
 			{
-				printf("Erro na criação do vertice\n");
+				printf("Erro ao criar o vertice\n");
 			}
 			break;
 
