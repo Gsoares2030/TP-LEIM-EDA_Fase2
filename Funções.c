@@ -5,6 +5,8 @@
   *********************************************************************/
 
 #include "Header.h"
+#include <limits.h>
+
 
 #pragma warning(disable: 4996)
  
@@ -71,6 +73,7 @@ void listarMeios(Grafo g, char geocodigo[])
         {
             printf("Codigo meio: %d \n Tipo transporte: %s\n Nivel de bateria %0.2f\n", aux->codigo,aux->tipotransporte,aux->bateria);
             aux = aux->seguinte;
+            printf("----------------------------------------\n");
         }
     }
     else printf("geocodigo inexistente\n");
@@ -186,20 +189,46 @@ int LerMeios(Grafo g)
 {
     FILE* fp;
     int cod;
-    char tipotransporte[40],geocodigo[TAM];
+    char tipotransporte[TAM],geocodigo[TAM];
     float bateria;
     fp = fopen("meios2.txt", "r");
     if (fp != NULL)
     {
         while (!feof(fp))
         {
-            fscanf(fp, "%[;]%[;]%d;%0.2f;\n",tipotransporte,geocodigo,&cod,&bateria);
+            fscanf(fp, "%[^;]%[^;]%d;%.2f;\n",tipotransporte,geocodigo,&cod,&bateria);
             inserirMeio(g, tipotransporte, geocodigo,cod,bateria);
         }
         fclose(fp);
         return (1);
     }
     return(0);
+}
+
+
+int GuardarGrafo(Grafo g)
+{
+    Adjacente adj;
+    FILE* fp;
+    fp = fopen("grafo.txt", "w");
+    if (fp != NULL)
+    {
+        while (g !=NULL)
+        {
+            adj = g->adjacentes;
+
+            while (adj !=NULL)
+            {
+                fprintf(fp, "%s;%s;%.2f;\n", g->vertice, adj->vertice ,adj->peso);
+                adj = adj->seguinte;
+            }
+            g = g->seguinte;
+        }
+        return (0);
+    }
+    return (-1);
+
+
 }
 
 #pragma endregion
@@ -286,13 +315,13 @@ int LerClientes(Grafo g)
 {
     FILE* fp;
     int ncliente;
-    char nome[40], localizacao[TAM];
+    char nome[TAM], localizacao[TAM];
     fp = fopen("clientes2.txt", "r");
     if (fp != NULL)
     {
         while (!feof(fp))
         {
-            fscanf(fp, "%[;]%[;]%d;\n", nome,localizacao,&ncliente);
+            fscanf(fp, "%[^;]%[^;]%d;\n", nome,localizacao,&ncliente);
             inserirCliente(g, nome,localizacao,ncliente);
         }
         fclose(fp);
@@ -309,36 +338,39 @@ e de seguida vai percorer o grafo ate chegar ao vertice com a determinada locali
 com a distancia indicada e se estiverem entre 0 e o maximo da distancia, seram listados os meios desses vertices
  * 
  */
-void ListarporDistancia(Grafo g, int distancia, char localizacao[])
+void ListarporDistancia(Grafo g, float distancia, char localizacao[])
 {
     Meios aux3;
     Adjacente aux2;
-    float aux;
+    Grafo vertice;
+    int encontrado = 0; // variável de controle para verificar se pelo menos um meio foi encontrado
     if (existeVertice(g, localizacao))
     {
         while (strcmp(g->vertice, localizacao) != 0)
         {
             g = g->seguinte;
         }
-        aux3 = g->meios;
+        vertice = g->vertice;
+        aux3 = vertice->meios;
         aux2 = g->adjacentes;
-        aux = aux2->peso;
-        if (aux > distancia)
-        {
-            printf("Não existem meios num raio de %d\n", distancia);
-        }
         while (aux2 != NULL)
         {
-            if (aux <= distancia)
+            if (aux2->peso <= distancia)
             {
-                printf("Nome do meio:%s \n Nivel de bateria:%0.2f \n Localizacao: %s \n", aux3->tipotransporte, aux3->bateria, aux3->geocodigo);
+                printf("Nome do meio:%s \n Nivel de bateria:%.2f \n Localizacao: %s \n", aux3->tipotransporte, aux3->bateria, aux3->geocodigo);
+                encontrado = encontrado+1; // atualiza a variável de controle
+                aux2 = aux2->seguinte;
             }
-            aux2 = aux2->seguinte;
             if (aux2 != NULL)
             {
-                aux3 = aux2->vertice;
-                aux = aux2->peso;
-            }
+                vertice= aux2->vertice;
+                aux3 = vertice->meios;
+             }
+            
+        }    
+        if (encontrado==0)
+        {
+            printf("Nao existem meios num raio de %.2f\n", distancia);
         }
     }
     else

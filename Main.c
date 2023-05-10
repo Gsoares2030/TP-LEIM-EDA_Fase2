@@ -24,6 +24,7 @@ int menu()
 	printf("10 Guardar Clientes\n");
 	printf("11 Ler Clientes\n");
 	printf("12 Listar Meios num determinado raio a volta do cliente\n");
+	printf("13 Guardar Grafo\n");
 	printf("0 Sair\n");
 	printf("Opcao:\n");
 	scanf("%d", &op);
@@ -35,10 +36,11 @@ int main()
 {
 
     Grafo g = NULL;
+	int caminho[TAM];
 
 	char tipoveiculo[40], geocodigo[TAM], localizacaoVertice[TAM], verticeinico[TAM],verticefim[TAM],nomecliente[50],localizacao[TAM];
-	int codigo,op,peso,numerocliente,resultado, distancia;
-	float bateria;
+	int codigo,op,numerocliente,resultado;
+	float bateria,peso,distancia;
 
 	do
 	{
@@ -64,7 +66,7 @@ int main()
 			printf("Localizacao segundo vertice:\n");
 			scanf("%s", &verticefim);
 			printf("Peso entre vertices:\n");
-			scanf("%d", &peso);
+			scanf("%f", &peso);
 			resultado=criarAresta(g, verticeinico, verticefim, peso);
 			printf("-------------------------------------\n");
 			if (resultado==1)
@@ -188,13 +190,27 @@ int main()
 			printf("Indique a localizacao do cliente:\n");
 			scanf("%s", &localizacao);
 			printf("Indique o raio em metros:\n");
-			scanf("%d", &distancia);
+			scanf("%f", &distancia);
 			printf("-------------------------------------------\n");
 			ListarporDistancia(g, distancia, localizacao);
 			break;
 
+		case 13:
+			resultado = GuardarGrafo(g);
+			if (resultado == 1)
+			{
+				printf("Grafo guardado com sucesso\n");
+			}
+			else if (resultado == 0)
+			{
+				printf("Erro na abertura do ficheiro\n");
+			}
+			break;
+
+		default: printf("Opcao invalida!!!\n");
+
 		}
 	} while (op != 0);
 
-	return 0;
+	
 }
