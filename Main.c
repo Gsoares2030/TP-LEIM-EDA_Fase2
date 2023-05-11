@@ -23,8 +23,9 @@ int menu()
 	printf("9 Ler Meios\n");
 	printf("10 Guardar Clientes\n");
 	printf("11 Ler Clientes\n");
-	printf("12 Listar Meios num determinado raio a volta do cliente\n");
-	printf("13 Guardar Grafo\n");
+	printf("12 Guardar Grafo\n");
+	printf("13 Ler Grafo\n");
+	printf("14 Listar Meios num determinado raio a volta do cliente\n");
 	printf("0 Sair\n");
 	printf("Opcao:\n");
 	scanf("%d", &op);
@@ -185,32 +186,39 @@ int main()
 				printf("Erro na abertura do ficheiro\n");
 			}
 			break;
+		case 12: resultado = GuardarGrafo(g);
 
-		case 12: 
+			if (resultado==0)
+			{
+				printf("Grafo guardado com sucesso\n");
+			}
+			if (resultado == -1)
+			{
+				printf("Erro ao guardar o grafo\n");
+			}
+			break;
+
+		case 13:
+
+
+
+			break;
+
+		case 14: 
 			printf("Indique a localizacao do cliente:\n");
 			scanf("%s", &localizacao);
 			printf("Indique o raio em metros:\n");
 			scanf("%f", &distancia);
+			printf("Indique o tipo de meio de transporte: \n");
+			scanf("%s", &tipoveiculo);
 			printf("-------------------------------------------\n");
-			ListarporDistancia(g, distancia, localizacao);
+			ListarporDistancia(g, distancia, localizacao,tipoveiculo);
 			break;
 
-		case 13:
-			resultado = GuardarGrafo(g);
-			if (resultado == 1)
-			{
-				printf("Grafo guardado com sucesso\n");
-			}
-			else if (resultado == 0)
-			{
-				printf("Erro na abertura do ficheiro\n");
-			}
-			break;
 
 		default: printf("Opcao invalida!!!\n");
 
 		}
 	} while (op != 0);
 
-	
 }

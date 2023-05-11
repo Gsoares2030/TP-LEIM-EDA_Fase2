@@ -53,7 +53,9 @@ int GuardarMeios(Grafo g);
 int LerMeios(Grafo g);
 int GuardarClientes(Grafo g);
 int LerClientes(Grafo g);
-void ListarporDistancia(Grafo g, int distancia, char localizacao[]);
+void ListarporDistancia(Grafo g, float distancia, char localizacao[], char tipotranporte[]);
 int GuardarGrafo(Grafo g);
+
+
 
 
