@@ -206,7 +206,13 @@ int LerMeios(Grafo g)
 }
 
 
-
+/**
+ * 
+ * \Enter: Entra o grafo
+ * \brief: A função vai guardar num ficheiro de texto os vertices do grafo e os adjacntes a esses vertices, vem como o peso das arestas
+ * \return: Retorna 0 em caso de
+ * 
+ */
 int GuardarGrafo(Grafo g)
 {
     Adjacente adj;
@@ -225,9 +231,30 @@ int GuardarGrafo(Grafo g)
             }
             g = g->seguinte;
         }
-        return (0);
+        return (1);
     }
-    return (-1);
+    return (0);
+}
+
+
+int LerMeios(Grafo g,Grafo* g1)
+{
+    FILE* fp;
+    char vertice[TAM], verticeadjacente[TAM];
+    float peso;
+    fp = fopen("grafo.txt", "r");
+    if (fp != NULL)
+    {
+        while (!feof(fp))
+        {
+            fscanf(fp, "%[^;];%[^;];%d;%.2f;\n", vertice, verticeadjacente, &peso);
+            criarVertice(g1, vertice);
+            criarAresta(g, vertice, verticeadjacente, peso);
+        }
+        fclose(fp);
+        return (1);
+    }
+    return(0);
 }
 
 #pragma endregion

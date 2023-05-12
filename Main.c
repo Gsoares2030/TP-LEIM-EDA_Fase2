@@ -188,20 +188,25 @@ int main()
 			break;
 		case 12: resultado = GuardarGrafo(g);
 
-			if (resultado==0)
+			if (resultado == 1)
 			{
 				printf("Grafo guardado com sucesso\n");
 			}
-			if (resultado == -1)
+			if (resultado == 0)
 			{
 				printf("Erro ao guardar o grafo\n");
 			}
 			break;
 
-		case 13:
-
-
-
+		case 13: resultado = LerClientes(g, &g);
+			if (resultado==1)
+			{
+				printf("Grafo lido com sucesso \n");
+			}
+			if (resultado==0)
+			{
+				printf("Erro na leitura do grafo\n");
+			}
 			break;
 
 		case 14: 
