@@ -237,7 +237,7 @@ int GuardarGrafo(Grafo g)
 }
 
 
-int LerMeios(Grafo g,Grafo* g1)
+int LerGrafo(Grafo g,Grafo* g1)
 {
     FILE* fp;
     char vertice[TAM], verticeadjacente[TAM];

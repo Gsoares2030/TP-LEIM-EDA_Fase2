@@ -198,7 +198,7 @@ int main()
 			}
 			break;
 
-		case 13: resultado = LerClientes(g, &g);
+		case 13: resultado = LerGrafo(g, &g);
 			if (resultado==1)
 			{
 				printf("Grafo lido com sucesso \n");
