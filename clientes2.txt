@@ -1,1 +1,1 @@
-miguel;casa;23;
+manuel;trabalho;25;

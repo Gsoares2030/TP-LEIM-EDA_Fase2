@@ -237,6 +237,14 @@ int GuardarGrafo(Grafo g)
 }
 
 
+/**
+ * 
+ * \Enter: Entra e o apontador para o inicio do grafo e o conteudo do grafo
+ * \brief: A função vai ler o conteudo do ficheiro e guardae os diferentes parametros em variaveis. De seguida vai criar os vertices no grafo
+ *  e as arestas com os diferentes pesos entre os vertices
+ * \return: Retorna 1 em caso de sucesso e 0 em caso de erro
+ * 
+ */
 int LerGrafo(Grafo g,Grafo* g1)
 {
     FILE* fp;
@@ -297,7 +305,7 @@ void listarClientes(Grafo g, char localização[])
             printf("Sem clientes na localização indicada\n");
         else while (aux != NULL)
         {
-            printf("Nome cliente: %s\n Numero de Clinte %d\n", aux->nome,aux->numerocliente);
+            printf("Nome cliente: %s\n Numero de Clinte: %d\n", aux->nome,aux->numerocliente);
             aux = aux->seguinte;
         }
     }
