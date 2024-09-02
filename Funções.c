@@ -1,6 +1,6 @@
 /*****************************************************************//**
- **\author:Gonçalo Soares
- * \brief:Funções utilizadas na resolução da segunda fase do projeto
+ **\author:GonÃ§alo Soares
+ * \brief:FunÃ§Ãµes utilizadas na resoluÃ§Ã£o da segunda fase do projeto
  *  
   *********************************************************************/
 
@@ -13,8 +13,8 @@
 #pragma region Meios
 /**
  * \Enter: Entra o grafo, o geocodigo do novo meio e o codigo do novo meio
- * \brief: A função vai inserir meio de transporte na localização com geocódigo passado por parâmetro
- * \return: Devolve 1 em caso de sucesso ou 0 caso contrário
+ * \brief: A funÃ§Ã£o vai inserir meio de transporte na localizaÃ§Ã£o com geocÃ³digo passado por parÃ¢metro
+ * \return: Devolve 1 em caso de sucesso ou 0 caso contrÃ¡rio
  */
 int inserirMeio(Grafo g, char tipotransporte[],char geocodigo[], int codigoMeio, float bateria)
 {
@@ -35,10 +35,10 @@ int inserirMeio(Grafo g, char tipotransporte[],char geocodigo[], int codigoMeio,
 }
 
 /*
- * \Enter: Entra o endereço inicial do grafo e o nome do novo vertice 
- * \brief: A função irá um grafo novo (auxialiar) onde irá guardar o nome do novo vertice, os meios exitentes nesse vertice
- e depois irá guardar no endereço seguinte o endereço inicial do grafo ja existente e vai mudar de seguida o endereço inicial do grafo para o endereço inicial do novo vertice.
- * \return:  Devolve 1 em caso de sucesso ou 0 caso contrário
+ * \Enter: Entra o endereÃ§o inicial do grafo e o nome do novo vertice 
+ * \brief: A funÃ§Ã£o irÃ¡ um grafo novo (auxiliar) onde irÃ¡ guardar o nome do novo vertice, os meios exitentes nesse vertice
+ e depois irÃ¡ guardar no endereÃ§o seguinte o endereÃ§o inicial do grafo ja existente e vai mudar de seguida o endereÃ§o inicial do grafo para o endereÃ§o inicial do novo vertice.
+ * \return:  Devolve 1 em caso de sucesso ou 0 caso contrÃ¡rio
  * 
  */
 int criarVertice(Grafo* g, char novoId[])
@@ -58,8 +58,8 @@ int criarVertice(Grafo* g, char novoId[])
 }
 
 /**
- * \Enter: Entra o grafo e o geocodigo no qual iremos ver quais meios exitem nessa localização 
- * \brief:Lista os códigos dos meios de transporte presente numa determinada localização passada por parâmetro 
+ * \Enter: Entra o grafo e o geocodigo no qual iremos ver quais meios exitem nessa localizaÃ§Ã£o 
+ * \brief:Lista os cÃ³digos dos meios de transporte presente numa determinada localizaÃ§Ã£o passada por parÃ¢metro 
  */
 void listarMeios(Grafo g, char geocodigo[])
 {
@@ -82,8 +82,8 @@ void listarMeios(Grafo g, char geocodigo[])
 /**
  * 
  * \Enter: Entra o grafo e o vertice que queremos procurar
- * \brief: A função irá comparar os vertices exitentes no grafo, com o que queremos procurar
- * \return: Devolve 1 se o vertice existe no grafo ou 0 caso contrário
+ * \brief: A funÃ§Ã£o irÃ¡ comparar os vertices exitentes no grafo, com o que queremos procurar
+ * \return: Devolve 1 se o vertice existe no grafo ou 0 caso contrÃ¡rio
  */
 int existeVertice(Grafo g, char vertice[])
 {
@@ -100,8 +100,8 @@ int existeVertice(Grafo g, char vertice[])
 
 /**
  * \Enter: Entra o grafo, o vertice de origem e de destino da aresta que queremos e o peso dessa aresta
- * \brief: A função irá criar uma aresta, para isso verifica se os vertices pedidos existem, caso exista ira criar uma aresta 
- * \return: Devolve 1 em caso de sucesso ou 0 caso contrário
+ * \brief: A funÃ§Ã£o irÃ¡ criar uma aresta, para isso verifica se os vertices pedidos existem, caso exista ira criar uma aresta 
+ * \return: Devolve 1 em caso de sucesso ou 0 caso contrÃ¡rio
  * 
  */
 int criarAresta(Grafo g, char vOrigem[], char vDestino[], float peso)
@@ -126,7 +126,7 @@ int criarAresta(Grafo g, char vOrigem[], char vDestino[], float peso)
 }
 /**
  * \Enter: Entra o grafo e o vertice no qual queremos ver os adjacenetes
- * \brief: A função irá verificar a existencia desse vertice no grafo e de seguida irá listar os adjacentes
+ * \brief: A funÃ§Ã£o irÃ¡ verificar a existencia desse vertice no grafo e de seguida irÃ¡ listar os adjacentes
  */
 void listarAdjacentes(Grafo g, char vertice[])
 {
@@ -156,7 +156,7 @@ void listarAdjacentes(Grafo g, char vertice[])
 /**
  * 
  * \Enter: Entra o grafo
- * \brief: A função vai guardando os meios presentes na lista ligada
+ * \brief: A funÃ§Ã£o vai guardando os meios presentes na lista ligada
  * \return: Devolve 1 em caso de sucesso e 0 caso haja algum erro
  * 
  */
@@ -181,7 +181,7 @@ int GuardarMeios(Grafo g)
 /**
  * 
  * \Enter: Entra o grafo 
- * \brief: A função irá ler os meios presentes no ficheiro de texto e de seguida vai inserir os meios no grafo.
+ * \brief: A funÃ§Ã£o irÃ¡ ler os meios presentes no ficheiro de texto e de seguida vai inserir os meios no grafo.
  * \return: Devolve 1 em caso de sucesso e 0 caso haja algum erro
  * 
  */
@@ -209,7 +209,7 @@ int LerMeios(Grafo g)
 /**
  * 
  * \Enter: Entra o grafo
- * \brief: A função vai guardar num ficheiro de texto os vertices do grafo e os adjacntes a esses vertices, vem como o peso das arestas
+ * \brief: A funÃ§Ã£o vai guardar num ficheiro de texto os vertices do grafo e os adjacntes a esses vertices, vem como o peso das arestas
  * \return: Retorna 0 em caso de
  * 
  */
@@ -240,7 +240,7 @@ int GuardarGrafo(Grafo g)
 /**
  * 
  * \Enter: Entra e o apontador para o inicio do grafo e o conteudo do grafo
- * \brief: A função vai ler o conteudo do ficheiro e guardae os diferentes parametros em variaveis. De seguida vai criar os vertices no grafo
+ * \brief: A funÃ§Ã£o vai ler o conteudo do ficheiro e guardae os diferentes parametros em variaveis. De seguida vai criar os vertices no grafo
  *  e as arestas com os diferentes pesos entre os vertices
  * \return: Retorna 1 em caso de sucesso e 0 em caso de erro
  * 
@@ -270,9 +270,9 @@ int LerGrafo(Grafo g,Grafo* g1)
 #pragma region Cliente
 
 /**
- * \Enter: Entra o grafo,o nome do cliente, o localização do novo cliente e o numero de cliente do novo meio
- * \brief: A função vai inserir o cliente na localização passado por parâmetro
- * \return: Devolve 1 em caso de sucesso ou 0 caso contrário
+ * \Enter: Entra o grafo,o nome do cliente, o localizaÃ§Ã£o do novo cliente e o numero de cliente do novo meio
+ * \brief: A funÃ§Ã£o vai inserir o cliente na localizaÃ§Ã£o passado por parÃ¢metro
+ * \return: Devolve 1 em caso de sucesso ou 0 caso contrÃ¡rio
  */
 int inserirCliente(Grafo g, char nome[], char localizacaocliente[], int numerocliente)
 {
@@ -291,32 +291,32 @@ int inserirCliente(Grafo g, char nome[], char localizacaocliente[], int numerocl
     }
 }
 /**
- * \Enter: Entra o grafo e o geocodigo no qual iremos ver quais clientes exitem nessa localização
- * \brief:Lista os nomes dos clientes e o número de cliente dos cleintes presente numa determinada localização passada por parâmetro
+ * \Enter: Entra o grafo e o geocodigo no qual iremos ver quais clientes exitem nessa localizaÃ§Ã£o
+ * \brief:Lista os nomes dos clientes e o nÃºmero de cliente dos cleintes presente numa determinada localizaÃ§Ã£o passada por parÃ¢metro
  */
-void listarClientes(Grafo g, char localização[])
+void listarClientes(Grafo g, char localizaÃ§Ã£o[])
 {
-    while ((g != NULL) && (strcmp(g->vertice, localização) != 0))
+    while ((g != NULL) && (strcmp(g->vertice, localizaÃ§Ã£o) != 0))
         g = g->seguinte;
     if (g != NULL)
     {
         Cliente aux = g->cliente;
         if (aux == NULL)
-            printf("Sem clientes na localização indicada\n");
+            printf("Sem clientes na localizaÃ§Ã£o indicada\n");
         else while (aux != NULL)
         {
             printf("Nome cliente: %s\n Numero de Clinte: %d\n", aux->nome,aux->numerocliente);
             aux = aux->seguinte;
         }
     }
-    else printf("Localização inexistente\n");
+    else printf("LocalizaÃ§Ã£o inexistente\n");
 }
 
 
 /**
  * 
  * \Enter: Entra o grafo
- * \brief: A função vai guardando no ficheiro de texto os clinetes presentes na lista ligada
+ * \brief: A funÃ§Ã£o vai guardando no ficheiro de texto os clinetes presentes na lista ligada
  * \return: Devolve 1 caso guarde com sucesso e 0 caso haja algum erro
  * 
  */
@@ -341,7 +341,7 @@ int GuardarClientes(Grafo g)
 /**
  * 
  * \Enter: Entra o grafo 
- * \brief: A função vai lendo os clientes que se encontaravam guardados no ficheiro de texto e vai adicionando-os ao grafo
+ * \brief: A funÃ§Ã£o vai lendo os clientes que se encontaravam guardados no ficheiro de texto e vai adicionando-os ao grafo
  * \return: Devolve 1 caso consiga ler e 0 caso haja algum erro na leitura
  * 
  */
@@ -366,9 +366,9 @@ int LerClientes(Grafo g)
 
 /**
  * 
- * \Enter: Entra o grafo, a distancia maxima a que um meio pode estar do cliente e a localização do cliente
- * \brief: A função irá ver primeiramente se a localização indicada existe no garfo, para isso compara os vertices existentes no grafo com a localização
-e de seguida vai percorer o grafo ate chegar ao vertice com a determinada localização, depois vai comparar a distancia desse vertice aos adjacentes
+ * \Enter: Entra o grafo, a distancia maxima a que um meio pode estar do cliente e a localizaÃ§Ã£o do cliente
+ * \brief: A funÃ§Ã£o irÃ¡ ver primeiramente se a localizaÃ§Ã£o indicada existe no garfo, para isso compara os vertices existentes no grafo com a localizaÃ§Ã£o
+e de seguida vai percorer o grafo ate chegar ao vertice com a determinada localizaÃ§Ã£o, depois vai comparar a distancia desse vertice aos adjacentes
 com a distancia indicada e se estiverem entre 0 e o maximo da distancia, seram listados os meios desses vertices
  * 
  */
@@ -377,7 +377,7 @@ void ListarporDistancia(Grafo g, float distancia, char localizacao[],char tipotr
     Meios aux3;
     Adjacente aux2;
     Grafo vertice;
-    int encontrado = 0; // variável de controle para verificar se pelo menos um meio foi encontrado
+    int encontrado = 0; // variÃ¡vel de controle para verificar se pelo menos um meio foi encontrado
     if (existeVertice(g, localizacao))
     {
         while (strcmp(g->vertice, localizacao) != 0)
@@ -392,7 +392,7 @@ void ListarporDistancia(Grafo g, float distancia, char localizacao[],char tipotr
             if (aux2->peso <= distancia && strcmp(aux3->tipotransporte,tipotranporte)==0)
             {
                 printf("Nome do meio:%s \n Nivel de bateria:%.2f \n Localizacao:%s \n", aux3->tipotransporte, aux3->bateria, aux3->geocodigo);
-                encontrado = encontrado+1; // atualiza a variável de controle
+                encontrado = encontrado+1; // atualiza a variÃ¡vel de controle
                 aux2 = aux2->seguinte;
             }
             if (aux2 != NULL)
